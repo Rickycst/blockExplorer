@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+{% set active = "block" %}
+
+{% block title %}Block Explorer{% endblock %}
+
+{% block body %}
+
+    <form method="GET" action="/block" class='w-50 mx-auto'>
+        <div class="row g-3 m-3">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">View block number :</label>
+            </div>
+            <div class="col-auto">
+                <input type="number" class="form-control" id="exampleInputEmail1" name="id" aria-describedby="emailHelp" min=0>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        </div>
+    </form>
+
+{% if blockInfo %}
+
+    <h1 class="col-md-2 mx-auto my-5">Block  {{ blockInfo['number'] }} :</h1>
+
+    <table class="table table-striped mw-100 mx-5">
+
+        <tbody>
+            {% for key in blockInfo.keys():  %}
+                <tr>
+                    <th scope="row">{{ key }} </th>
+                    <td> {{ blockInfo[key] }} </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+{% endif %}
+
+{% endblock %}

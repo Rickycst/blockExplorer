@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% set active = "transaction" %}
+
+{% block title %}Transaction Explorer{% endblock %}
+
+{% block body %}
+
+<form method="GET" acion="/block" class='px-auto'>
+    <div class="row g-3 align-items-center mx-auto d-inline-flex">
+        <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Transaction Hash :</label>
+        </div>
+        <div class="col-auto">
+            <input type="number" class="form-control" id="exampleInputEmail1" name="id" aria-describedby="emailHelp" min=0>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    </div>
+</form>
+
+{% endblock %}
