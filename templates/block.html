@@ -1,3 +1,13 @@
+{% set table_semple = [
+    ('baseFeePerGas', 'Base Fee Per Gas'),
+    ('gasLimit', 'Gas Limit'),
+    ('gasUsed', 'Gas Used'),
+    ('number', 'Number'),
+    ('receiptsRoot', 'Receipts Root'),
+    ('size', 'Size')
+]%}
+
+
 
 {% extends "base.html" %}
 {% set active = "block" %}
@@ -22,11 +32,8 @@
     </form>
 
 {% if blockInfo %}
-
     <h1 class="col-md-2 mx-auto my-5">Block Info {{ blockInfo['number'] }} :</h1>
-
     <table class="table table-striped mw-100 mx-5">
-
         <tbody>
             {% for key in blockInfo.keys():  %}
                 <tr>
@@ -35,7 +42,28 @@
                 </tr>
             {% endfor %}
         </tbody>
-
+    </table>
+{% endif %}
+{% if blocksInfo %}
+    <h1 class="col-md-2 mx-auto my-5"> 5 lastest blocks :</h1>
+    <table class="table table-striped mw-100 mx-5">
+        <thead class="thead-dark">
+            <tr>
+                {% for id, label in table_semple:%}
+                    <th scope="col">{{ label }}</th>
+                {% endfor %}
+            </tr>       
+        </thead>
+        <tbody>
+            {% for block in blocksInfo:  %}
+                <tr>
+                    {% for id, label in table_semple:%}
+                        <td>{{ block[id] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tr>
+        </tbody>
     </table>
 {% endif %}
 
